@@ -1,4 +1,4 @@
-from tkinter import * # Import tkinter
+from tkinter import *
     
 class CanvasDemo:
     def __init__(self):
@@ -13,7 +13,7 @@ class CanvasDemo:
         # Place buttons in frame
         frame = Frame(window)
         frame.pack()
-        btMakeBoard = Button(frame, text = "Make Board", command = self.makeBoardPart1)
+        btMakeBoard = Button(frame, text = "Reset Board", command = self.makeBoardPart1)
         btMakeBoard.grid(row = 1, column = 1)
         
         window.mainloop() # Create an event loop
@@ -40,5 +40,23 @@ class CanvasDemo:
                 y += 80
             y = 50
             x += 80
+
+        self.setPieces()
+
+    def setPieces(self):
+        x1 = 10
+        while x1 < 320:
+            self.canvas.create_oval(x1, 10, x1 + 40, 50, fill = "red", tags = "red")
+            x1 += 80
+
+        x1 = 10
+        while x1 < 320:
+            self.canvas.create_oval(x1, 90, x1 + 40, 130, fill = "red", tags = "red")
+            x1 += 80
+
+        x1 = 50
+        while x1 < 320:
+            self.canvas.create_oval(x1, 50, x1 + 40, 90, fill = "red", tags = "red")
+            x1 += 80
 
 CanvasDemo() # Create GUI 
