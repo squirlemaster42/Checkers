@@ -9,7 +9,8 @@ class CanvasDemo:
         self.canvas = Canvas(window, width = 340, height = 340,
             bg = "white")
         self.canvas.pack()
-        
+        self.canvas.bind("<Button-1>", self.processMouseEvent)
+
         # Place buttons in frame
         frame = Frame(window)
         frame.pack()
@@ -41,8 +42,6 @@ class CanvasDemo:
             y = 50
             x += 80
 
-        self.setPieces()
-
     def setPieces(self):
         x1 = 10
         while x1 < 320:
@@ -58,5 +57,38 @@ class CanvasDemo:
         while x1 < 320:
             self.canvas.create_oval(x1, 50, x1 + 40, 90, fill = "red", tags = "red")
             x1 += 80
+
+        x1 = 50
+        while x1 < 320:
+            self.canvas.create_oval(x1, 210, x1 + 40, 250, fill = "white", tags = "white")
+            x1 += 80
+
+        x1 = 50
+        while x1 < 320:
+            self.canvas.create_oval(x1, 290, x1 + 40, 330, fill = "white", tags = "white")
+            x1 += 80
+
+        x1 = 10
+        while x1 < 320:
+            self.canvas.create_oval(x1, 250, x1 + 40, 290, fill = "white", tags = "white")
+            x1 += 80
+
+    def processMouseEvent(self, event):
+        print(event.x, event.y)
+        print(event.x_root, event.y_root)
+        print(event.num)
+
+    def makeVirtualBoard(self):
+        virtualBoard = [
+            [1, 0, 1, 0, 1, 0, 1, 0],
+            [0, 1, 0, 1, 0, 1, 0, 1],
+            [1, 0, 1, 0, 1, 0, 1, 0],
+            [0, 1, 0, 1, 0, 1, 0, 1],
+            [1, 0, 1, 0, 1, 0, 1, 0],
+            [0, 1, 0, 1, 0, 1, 0, 1],
+            [1, 0, 1, 0, 1, 0, 1, 0],
+            [0, 1, 0, 1, 0, 1, 0, 1],
+        ]
+        return virtualBoard
 
 CanvasDemo() # Create GUI 
